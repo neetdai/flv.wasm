@@ -1,0 +1,12 @@
+{
+  "name": "flv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "flv.js",
+  "scripts": {
+    "build": "cargo build --target=wasm32-unknown-unknown",
+    "nightly": "rustup override set nightly"
+  },
+  "author": "Mr.Panda<xivistudios@gmail.com>",
+  "license": "MIT"
+}
