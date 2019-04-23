@@ -4,15 +4,6 @@ version = "0.1.0"
 authors = ["Mr.Panda<xivistudios@gmail.com>"]
 edition = "2018"
 
-[lib]
-crate-type = ["cdylib"]
-
 [dependencies]
-js-sys = "0.3.19"
-serde = "^1.0.59"
-serde_derive = "^1.0.59"
-
-
-[dependencies.wasm-bindgen]
-version = "^0.2"
-features = ["serde-serialize"]
+chrono = "0.4"
+regex = "1"
