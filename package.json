@@ -2,7 +2,7 @@
   "name": "flv",
   "version": "1.0.0",
   "description": "",
-  "main": "flv.js",
+  "main": "",
   "scripts": {
     "build": "cargo build --target=wasm32-unknown-unknown",
     "nightly": "rustup override set nightly"
