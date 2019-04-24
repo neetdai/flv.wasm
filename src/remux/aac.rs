@@ -111,10 +111,12 @@ impl AAC {
 
     /// # 获取静音填充盒子
     /// 
+    /// ## example
     /// ```
     /// let handle = AAC { codec: "mp4a.40.2", channelCount: 1 };
     /// handle.get_silent_frame();
     /// ```
+    /// 
     pub fn get_silent_frame (&self) -> Option<Vec<u8>> {
         match self.codec {
             "mp4a.40.2" => match self.channelCount {
