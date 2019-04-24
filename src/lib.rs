@@ -1,22 +1,23 @@
-#[macro_use]
-extern crate serde_derive;
+extern crate chrono;
+extern crate regex;
 
 mod common_enum;
 mod value;
+mod configure;
+mod player;
+mod events;
+mod util;
 
 // use.
 use wasm_bindgen::prelude::*;
 use common_enum::{MediaDataType};
 use value::Value;
+use events::EventEmitter;
+use events::Listener;
 
 
-// MediaSegment.
-#[derive(Serialize)]
-struct MediaSegment {
-    duration: f64,  // 表示段持续时间（以毫秒为单位）
-    filesize: f64,  // 表示以字节为单位的段文件大小
-    url: String  // 表示段文件URL
-}
+// types.
+pub type Events<T> = EventEmitter<Listener<T>>;
 
 
 // MediaDataSource.
@@ -63,7 +64,6 @@ struct Config<T> {
 
 
 // 创建播放器
-#[wasm_bindgen]
-pub fn createPlayer (mediaDataSource: &JsValue) {
+// pub fn createPlayer (mediaDataSource: MediaDataSource, config: Config) {
     
-}
+// }
