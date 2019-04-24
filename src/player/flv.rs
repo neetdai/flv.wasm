@@ -1,6 +1,6 @@
-use crate::configure::MediaDataSource;
-use crate::configure::Config;
-use crate::events::EventEmitter;
+use crate::util::configure::MediaDataSource;
+use crate::util::configure::Config;
+use crate::util::events::EventEmitter;
 use crate::Events;
 use chrono::offset::Local;
 use chrono::DateTime;
@@ -11,7 +11,7 @@ pub struct FlvPlayer<T> {
     pub tag: String,
     pub types: String,
     pub emitter: Events<T>,
-    pub config: Config,
+    pub config: Config<T>,
     pub now: DateTime<Local>,
     pub pending_seek_time: Option<T>,
     pub request_set_time: bool,
@@ -33,7 +33,7 @@ pub struct FlvPlayer<T> {
 impl<T> FlvPlayer<T> {
 
     // 创建实例.
-    pub fn new (mediaDataSource: MediaDataSource, config: Config) -> Self {
+    pub fn new (mediaDataSource: MediaDataSource, config: Config<T>) -> Self {
         FlvPlayer {
             tag: String::from("FlvPlayer"),
             types: String::from("FlvPlayer"),
