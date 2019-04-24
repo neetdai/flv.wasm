@@ -1,24 +1,33 @@
-#[macro_use]
-extern crate serde_derive;
+extern crate web_sys;
+extern crate wasm_bindgen;
+extern crate chrono;
+extern crate regex;
+extern crate woothee;
 
+mod common_enum;
+mod value;
+mod configure;
+mod player;
+mod events;
+mod util;
+mod remux;
 
 // use.
 use wasm_bindgen::prelude::*;
+use common_enum::{MediaDataType};
+use value::Value;
+use events::EventEmitter;
+use events::Listener;
 
 
-// MediaSegment.
-#[derive(Serialize)]
-struct MediaSegment {
-    duration: f64,  // 表示段持续时间（以毫秒为单位）
-    filesize: f64,  // 表示以字节为单位的段文件大小
-    url: String  // 表示段文件URL
-}
+// types.
+pub type Events<T> = EventEmitter<Listener<T>>;
 
 
 // MediaDataSource.
 #[derive(Serialize)]
 struct MediaDataSource {
-    Type: String,  // 表示媒体类型，'flv'或'mp4'
+    Type: MediaDataType,  // 表示媒体类型，'flv'或'mp4'
     isLive: bool,  // 指示数据源是否为实时流
     cors: bool,  // 指示是否为http获取启用CORS
     withCredentials: bool, // 指示是否使用cookie进行http获取
@@ -33,7 +42,7 @@ struct MediaDataSource {
 
 // configure.
 #[derive(Serialize)]
-struct Config {
+struct Config<T> {
     enableWorker: bool,  // 启用分离线程进行传输
     enableStashBuffer: bool,  // 启用IO存储缓冲区
     stashInitialSize: f64,  // 表示IO存储缓冲区初始大小
@@ -51,15 +60,14 @@ struct Config {
     seekParamStart: String,  // 表示查找起始参数名称
     seekParamEnd: String,  // 表示查找结束参数名称
     rangeLoadZeroStart: bool,  // 如果使用范围搜索，则首次发送加载
-    customSeekHandler: JsValue, // 表示自定义搜索处理程序
+    customSeekHandler: Value<T>, // 表示自定义搜索处理程序
     reuseRedirectedURL: bool,  // 重新使用301/302重定向的URL以获取后续请求
     referrerPolicy: String,  // 使用FetchStreamLoader时指示Referrer策略
-    headers: JsValue // 将添加到请求的其他标头
+    headers: Value<T> // 将添加到请求的其他标头
 }
 
 
 // 创建播放器
-#[wasm_bindgen]
-pub fn createPlayer (mediaDataSource: &JsValue) {
+// pub fn createPlayer (mediaDataSource: MediaDataSource, config: Config) {
     
-}
+// }
