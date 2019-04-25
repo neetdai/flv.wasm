@@ -5,6 +5,13 @@ install:
   - rustup target add wasm32-unknown-unknown
   - rustup component add rustfmt
 
+jobs:
+  include:
+    - stage: fomatted?
+      script: cargo fmt -- --check
+    - stage: check
+      script: cargo check --target=wasm32-unknown=unknown
+    - stage: test
 
 notifications:
   email:
