@@ -11,8 +11,7 @@ crate-type = ["cdylib"]
 chrono = "0.4"
 regex = "1"
 woothee = "*"
-serde = "^1.0.59"
-serde_derive = "^1.0.59"
+serde = { version = "1", features = ["derive"] }
 
 [dependencies.wasm-bindgen]
 version = "^0.2"
