@@ -776,16 +776,16 @@ impl MP4 {
             0x00,
             0x00,
             0x00,
-            0x00, // version 0 + flags
-            0x03, // descriptor_type
+            0x00,                              // version 0 + flags
+            0x03,                              // descriptor_type
             (0x17 + meta.configs.len()) as u8, // length3
             0x00,
-            0x01, // es_id
-            0x00, // stream_priority
-            0x04, // descriptor_type
+            0x01,                              // es_id
+            0x00,                              // stream_priority
+            0x04,                              // descriptor_type
             (0x0F + meta.configs.len()) as u8, // length
-            0x40, // codec: mpeg4_audio
-            0x15, // stream_type: Audio
+            0x40,                              // codec: mpeg4_audio
+            0x15,                              // stream_type: Audio
             0x00,
             0x00,
             0x00, // buffer_size

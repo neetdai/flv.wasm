@@ -23,7 +23,8 @@ pub enum MediaDataType {
 
 impl Serialize for MediaDataType {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where S: Serializer,
+    where
+        S: Serializer,
     {
         match &self {
             MediaDataType::FLV => serializer.serialize_str("flv"),
