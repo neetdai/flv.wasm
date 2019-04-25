@@ -3,18 +3,19 @@
 pub mod configure;
 pub mod events;
 
-
 /// # array.protype.set simulation.
 ///     can be written beyond the boundary.
-/// 
+///
 /// ## example
 /// ```
 /// let mut a = vec![0, 1, 2];
 /// let b = vec![3, 4, 5];
 /// set_vec(&mut a, &b, 4);
 /// ```
-pub fn set_vec<T> (data: &mut Vec<T>, insert: &Vec<T>, offset: usize) 
-    where T: std::clone::Clone  {
+pub fn set_vec<T>(data: &mut Vec<T>, insert: &Vec<T>, offset: usize)
+where
+    T: std::clone::Clone,
+{
     let mut offset_copy = offset;
 
     // check boundary.

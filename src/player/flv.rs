@@ -1,10 +1,9 @@
-use crate::util::configure::MediaDataSource;
 use crate::util::configure::Config;
+use crate::util::configure::MediaDataSource;
 use crate::util::events::EventEmitter;
 use crate::Events;
 use chrono::offset::Local;
 use chrono::DateTime;
-
 
 // 播放器实例
 pub struct FlvPlayer<T> {
@@ -29,11 +28,9 @@ pub struct FlvPlayer<T> {
     pub always_seek_key_frame: bool,
 }
 
-
 impl<T> FlvPlayer<T> {
-
     // 创建实例.
-    pub fn new (mediaDataSource: MediaDataSource, config: Config<T>) -> Self {
+    pub fn new(mediaDataSource: MediaDataSource, config: Config<T>) -> Self {
         FlvPlayer {
             tag: String::from("FlvPlayer"),
             types: String::from("FlvPlayer"),
@@ -55,14 +52,13 @@ impl<T> FlvPlayer<T> {
 
             // TODO: 需要浏览器UA信息
             always_seek_key_frame: false,
-            config
+            config,
         }
     }
 
     // 销毁实例
-    pub fn destroy (&mut self) {
+    pub fn destroy(&mut self) {
         if self.progress_checker.is_some() {
-
             // window.clearInterval(this._progressChecker);
             // TODO: 需要关闭定时器
             //      可以使用Rust实现
@@ -79,12 +75,8 @@ impl<T> FlvPlayer<T> {
     }
 
     // 重新加载
-    pub fn unload (&self) {
-
-    }
+    pub fn unload(&self) {}
 
     // 分离媒体元素
-    pub fn detach_media_element (&self) {
-
-    }
+    pub fn detach_media_element(&self) {}
 }

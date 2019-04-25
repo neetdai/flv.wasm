@@ -1,7 +1,12 @@
 language: rust
+cache: 
+  directories:
+    - $HOME/.rustup
+    - $HOME/.cargo
 sudo: false
 
-install:
+before_install:
+  - rustup update
   - rustup target add wasm32-unknown-unknown
   - rustup component add rustfmt
 
@@ -10,9 +15,10 @@ jobs:
     - stage: fomatted?
       script: cargo fmt -- --check
     - stage: check
-      script: cargo check --target=wasm32-unknown=unknown
+      script: cargo check --target=wasm32-unknown-unknown
     - stage: test
+      script: cargo test --all
 
 notifications:
   email:
-on_success: never
+    on_success: never
