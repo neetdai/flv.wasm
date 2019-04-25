@@ -1,5 +1,5 @@
 language: rust
-cache: cargo
+cache: cargo, rustup
 sudo: false
 
 install:
@@ -11,7 +11,7 @@ jobs:
     - stage: fomatted?
       script: cargo fmt -- --check
     - stage: check
-      script: cargo check --target=wasm32-unknown=unknown
+      script: cargo check --target=wasm32-unknown-unknown
     - stage: test
       script: cargo test --all
 
