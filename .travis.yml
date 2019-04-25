@@ -5,7 +5,7 @@ cache:
     - $HOME/.cargo
 sudo: false
 
-install:
+before_install:
   - rustup target add wasm32-unknown-unknown
   - rustup component add rustfmt
 
