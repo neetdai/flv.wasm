@@ -12,6 +12,7 @@ jobs:
     - stage: check
       script: cargo check --target=wasm32-unknown=unknown
     - stage: test
+      script: cargo test --all
 
 notifications:
   email:
