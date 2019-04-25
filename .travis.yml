@@ -1,0 +1,11 @@
+language: rust
+sudo: false
+
+install:
+  - rustup target add wasm32-unknown-unknown
+  - rustup component add rustfmt
+
+
+notifications:
+  email:
+on_success: never
